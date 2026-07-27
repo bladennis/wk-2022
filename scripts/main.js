@@ -68,13 +68,13 @@ tlBr.to(".br-1", {stroke:"#eeeee4", duration: 0.25})
 svgBr.addEventListener("mouseenter", (e) => tlBr.play());
 svgBr.addEventListener("mouseleave", (e) => tlBr.reverse());
 
-const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': KEY,
-            'X-RapidAPI-Host': 'football98.p.rapidapi.com'
-        }
-    };
+// const options = {
+//         method: 'GET',
+//         headers: {
+//             'X-RapidAPI-Key': KEY,
+//             'X-RapidAPI-Host': 'football98.p.rapidapi.com'
+//         }
+//     };
     
 // fetch('https://football98.p.rapidapi.com/fifaworldcup/table', options)
 //     .then(response => response.json())
