@@ -222,300 +222,67 @@ fetch('./groups.json')
             tableData.push(groups)
         })
 
-        const groupA = tableData.splice(0,4)
-        const groupB = tableData.splice(0,4)
-        const groupC = tableData.splice(0,4)
-        const groupD = tableData.splice(0,4)
-        const groupE = tableData.splice(0,4)
-        const groupF = tableData.splice(0,4)
-        const groupG = tableData.splice(0,4)
-        const groupH = tableData.splice(0,4)
+        const groups = Array.from({ length: 8 }, () => tableData.splice(0, 4));
+        const [groupA, groupB, groupC, groupD, groupE, groupF, groupG, groupH] = groups;
 
-        groupA.sort((a, b) => a.Place - b.Place);
-        groupB.sort((a, b) => a.Place - b.Place);
-        groupC.sort((a, b) => a.Place - b.Place);
-        groupD.sort((a, b) => a.Place - b.Place);
-        groupE.sort((a, b) => a.Place - b.Place);
-        groupF.sort((a, b) => a.Place - b.Place);
-        groupG.sort((a, b) => a.Place - b.Place);
-        groupH.sort((a, b) => a.Place - b.Place);
-        
-        function generateTableA() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('thead tr');
-            let tbody = document.querySelector('tbody')
-        
-            Object.keys(groupA[0]).forEach(key => {
-                let newElement = document.createElement('th');
+        groups.forEach(group => group.sort((a, b) => a.Place - b.Place));
+
+        const tablesContainer = document.getElementById('tables');
+
+        function generateTable(group, label) {
+            const table = document.createElement('table');
+            const caption = document.createElement('caption');
+            caption.textContent = `Poule ${label}`;
+            table.appendChild(caption);
+
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+
+            Object.keys(group[0]).forEach(key => {
+                const newElement = document.createElement('th');
                 newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupA.forEach(obj => {
-        
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-        
-                for (const [key, value] of Object.entries(obj)) {
+                headerRow.appendChild(newElement);
+            });
 
-                    let td = document.createElement('td');
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
 
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
+            const tbody = document.createElement('tbody');
+
+            group.forEach(obj => {
+                const tr = document.createElement('tr');
+
+                Object.entries(obj).forEach(([key, value]) => {
+                    const td = document.createElement('td');
+
+                    if (key === 'Flag') {
+                        const imageEl = document.createElement('img');
                         imageEl.src = value;
                         td.appendChild(imageEl);
+                    } else {
+                        td.textContent = value;
                     }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableA();
 
-        function generateTableB() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Bth #Btr');
-            let tbody = document.querySelector('#Btb')
-        
-            Object.keys(groupB[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupB.forEach(obj => {
+                    tr.appendChild(td);
+                });
 
-                let tr = document.createElement('tr');
                 tbody.appendChild(tr);
+            });
 
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
+            table.appendChild(tbody);
+            tablesContainer.appendChild(table);
         }
-        generateTableB();
-        
-        function generateTableC() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Cth #Ctr');
-            let tbody = document.querySelector('#Ctb')
-        
-            Object.keys(groupC[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupC.forEach(obj => {
 
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableC();
-
-        function generateTableD() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Dth #Dtr');
-            let tbody = document.querySelector('#Dtb')
-        
-            Object.keys(groupD[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupD.forEach(obj => {
-
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableD();
-
-        function generateTableE() {
-        
-            let table = document.querySelector('table'); 
-
-            // table.querySelector('th');
-
-            let theading = document.querySelector('#Eth #Etr');
-            let tbody = document.querySelector('#Etb')
-        
-            Object.keys(groupE[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupE.forEach(obj => {
-
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableE();
-
-        function generateTableF() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Fth #Ftr');
-            let tbody = document.querySelector('#Ftb')
-        
-            Object.keys(groupF[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupF.forEach(obj => {
-
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableF();
-
-        function generateTableG() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Gth #Gtr');
-            let tbody = document.querySelector('#Gtb')
-        
-            Object.keys(groupG[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupG.forEach(obj => {
-
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableG();
-
-        function generateTableH() {
-        
-            let table = document.querySelector('table'); 
-            let theading = document.querySelector('#Hth #Htr');
-            let tbody = document.querySelector('#Htb')
-        
-            Object.keys(groupH[0]).forEach(key => {
-                let newElement = document.createElement('th');
-                newElement.textContent = key;
-                theading.appendChild(newElement);
-            })
-        
-            groupH.forEach(obj => {
-
-                let tr = document.createElement('tr');
-                tbody.appendChild(tr);
-
-                for (const [key, value] of Object.entries(obj)) {
-                    let td = document.createElement('td');
-                    if (key == "Flag"){
-                        // console.log(value)
-                        let imageEl = document.createElement('img');
-                        imageEl.src = value;
-                        td.appendChild(imageEl);
-                    }
-                    else {
-                        td.textContent = value; 
-                    }
-                    tr.appendChild(td)
-                }
-            })
-        }
-        generateTableH();
+        [
+            { group: groupA, label: 'A' },
+            { group: groupB, label: 'B' },
+            { group: groupC, label: 'C' },
+            { group: groupD, label: 'D' },
+            { group: groupE, label: 'E' },
+            { group: groupF, label: 'F' },
+            { group: groupG, label: 'G' },
+            { group: groupH, label: 'H' }
+        ].forEach(({ group, label }) => generateTable(group, label));
 
         // ----------------------------------------
         // KNOCKOUT
