@@ -288,117 +288,22 @@ fetch('./groups.json')
         // KNOCKOUT
         // ----------------------------------------
         
-        const groupA1 = groupA.slice(0, 1)
-        const seedA1 = []
-        groupA1.forEach(item => {
-            seedA1.push(item["Nation"])
-        })
-        document.getElementById('A1').innerHTML = seedA1;
+        const seedGroups = [
+            { ids: ['A1', 'A2'], group: groupA },
+            { ids: ['B1', 'B2'], group: groupB },
+            { ids: ['C1', 'C2'], group: groupC },
+            { ids: ['D1', 'D2'], group: groupD },
+            { ids: ['E1', 'E2'], group: groupE },
+            { ids: ['F1', 'F2'], group: groupF },
+            { ids: ['G1', 'G2'], group: groupG },
+            { ids: ['H1', 'H2'], group: groupH }
+        ];
 
-        const groupA2 = groupA.slice(1, 2)
-        const seedA2 = []
-        groupA2.forEach(item => {
-            seedA2.push(item["Nation"])
-        })
-        document.getElementById('A2').innerHTML = seedA2;
-
-        const groupB1 = groupB.slice(0, 1)
-        const seedB1 = []
-        groupB1.forEach(item => {
-            seedB1.push(item["Nation"])
-        })
-        document.getElementById('B1').innerHTML = seedB1;
-
-        const groupB2 = groupB.slice(1, 2)
-        const seedB2 = []
-        groupB2.forEach(item => {
-            seedB2.push(item["Nation"])
-        })
-        document.getElementById('B2').innerHTML = seedB2;
-        
-        const groupC1 = groupC.slice(0, 1)
-        const seedC1 = []
-        groupC1.forEach(item => {
-            seedC1.push(item["Nation"])
-        })
-        document.getElementById('C1').innerHTML = seedC1;
-
-        const groupC2 = groupB.slice(1, 2)
-        const seedC2 = []
-        groupC2.forEach(item => {
-            seedC2.push(item["Nation"])
-        })
-        document.getElementById('C2').innerHTML = seedC2;
-
-        const groupD1 = groupD.slice(0, 1)
-        const seedD1 = []
-        groupD1.forEach(item => {
-            seedD1.push(item["Nation"])
-        })
-        document.getElementById('D1').innerHTML = seedD1;
-        
-        const groupD2 = groupD.slice(1, 2)
-        const seedD2 = []
-        groupD2.forEach(item => {
-            seedD2.push(item["Nation"])
-        })
-        document.getElementById('D2').innerHTML = seedD2;
-
-        const groupE1 = groupE.slice(0, 1)
-        const seedE1 = []
-        groupE1.forEach(item => {
-            seedE1.push(item["Nation"])
-        })
-        document.getElementById('E1').innerHTML = seedE1;
-
-        const groupE2 = groupE.slice(1, 2)
-        const seedE2 = []
-        groupE2.forEach(item => {
-            seedE2.push(item["Nation"])
-        })
-        document.getElementById('E2').innerHTML = seedE2;
-
-        const groupF1 = groupF.slice(0, 1)
-        const seedF1 = []
-        groupF1.forEach(item => {
-            seedF1.push(item["Nation"])
-        })
-        document.getElementById('F1').innerHTML = seedF1;
-
-        const groupF2 = groupF.slice(1, 2)
-        const seedF2 = []
-        groupF2.forEach(item => {
-            seedF2.push(item["Nation"])
-        })
-        document.getElementById('F2').innerHTML = seedF2;
-
-        const groupG1 = groupG.slice(0, 1)
-        const seedG1 = []
-        groupG1.forEach(item => {
-            seedG1.push(item["Nation"])
-        })
-        document.getElementById('G1').innerHTML = seedG1;
-
-        const groupG2 = groupG.slice(1, 2)
-        const seedG2 = []
-        groupG2.forEach(item => {
-            seedG2.push(item["Nation"])
-        })
-        document.getElementById('G2').innerHTML = seedG2;
-
-        const groupH1 = groupH.slice(0, 1)
-        const seedH1 = []
-        groupH1.forEach(item => {
-            seedH1.push(item["Nation"])
-        })
-        document.getElementById('H1').innerHTML = seedH1;
-
-        const groupH2 = groupH.slice(1, 2)
-        const seedH2 = []
-        groupH2.forEach(item => {
-            seedH2.push(item["Nation"])
-        })
-        document.getElementById('H2').innerHTML = seedH2;
+        seedGroups.forEach(({ ids, group }) => {
+            ids.forEach((id, index) => {
+                document.getElementById(id).innerHTML = group[index]?.Nation ?? '';
+            });
+        });
 
         // function make() {
         //     const imageLink = 'https://oneftbl-cms.imgix.net/https%3A%2F%2Fimages.onefootball.com%2Ficons%2Fteams%2F164%2F38.png?auto=format%2Ccompress&crop=faces&dpr=2&fit=crop&h=22&q=25&w=22&s=34337e6ebce324335ee389617508f129'
