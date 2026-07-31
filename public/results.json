@@ -5,7 +5,8 @@
       "homeTeam": "Argentina",
       "awayLogo": "https://image-service.onefootball.com/transform?w=22&h=22&dpr=2&image=https%253A%252F%252Fimages.onefootball.com%252Ficons%252Fteams%252F164%252F45.png",
       "awayTeam": "France",
-      "MatchDay": "Tomorrow"
+      "homeTeamScore": "3(4)",
+      "awayTeamScore": "3(2)"
     }
     ],
     " Match for third place ": [
