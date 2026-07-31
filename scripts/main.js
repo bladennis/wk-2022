@@ -1,13 +1,8 @@
-// Our bundler automatically creates styling when imported in the main JS file!
 import '../styles/style.scss'
 
-// We can use node_modules directely in the browser!
 import * as d3 from 'd3';
 import { style } from 'd3';
 import gsap from "gsap";
-const KEY = import.meta.env.VITE_API_KEY
-
-console.log('main.js is linked');
 
 // ----------------------------------------
 // ANIMATION
@@ -68,25 +63,9 @@ tlBr.to(".br-1", {stroke:"#eeeee4", duration: 0.25})
 svgBr.addEventListener("mouseenter", (e) => tlBr.play());
 svgBr.addEventListener("mouseleave", (e) => tlBr.reverse());
 
-// const options = {
-//         method: 'GET',
-//         headers: {
-//             'X-RapidAPI-Key': KEY,
-//             'X-RapidAPI-Host': 'football98.p.rapidapi.com'
-//         }
-//     };
-    
-// fetch('https://football98.p.rapidapi.com/fifaworldcup/table', options)
-//     .then(response => response.json())
-//     .then(groups => {
-
 fetch('./groups.json')
     .then((response) => response.json())
     .then(groups => {
-
-        // ----------------------------------------
-        // DATA
-        // ----------------------------------------
                             
         const cleanData = groups.map(item => {
             let newItem = {
@@ -103,10 +82,6 @@ fetch('./groups.json')
 				
             return newItem
         })
-        
-        // fetch('https://football98.p.rapidapi.com/fifaworldcup/results', options)
-        // .then(response => response.json())
-        // .then(results => {
 
         fetch('./results.json')
         .then((response) => response.json())
@@ -304,15 +279,6 @@ fetch('./groups.json')
                 document.getElementById(id).innerHTML = group[index]?.Nation ?? '';
             });
         });
-
-        // function make() {
-        //     const imageLink = 'https://oneftbl-cms.imgix.net/https%3A%2F%2Fimages.onefootball.com%2Ficons%2Fteams%2F164%2F38.png?auto=format%2Ccompress&crop=faces&dpr=2&fit=crop&h=22&q=25&w=22&s=34337e6ebce324335ee389617508f129'
-        //     let createImg = document.createElement('img');
-        //     let match = document.querySelector('.left')
-        //                 createImg.src = imageLink;
-        //                 match.appendChild(createImg);
-        // }
-        // make();
 
             const roundConfigs = [
                 { key: ' Quarter-finals ', ids: ['quarter1', 'quarter2', 'quarter3', 'quarter4', 'quarter5', 'quarter6', 'quarter7', 'quarter8'] },

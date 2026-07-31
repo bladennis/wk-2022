@@ -1,7 +1,6 @@
 .knockout {
   display: flex;
   flex-direction: column;
-  // justify-content: center;
   align-items: center;
 }
 
@@ -48,7 +47,6 @@
   
 .right:after {
   content:'';
-  // border-color: black;
   border-width: 2px;
   position: absolute;
   display: block;
